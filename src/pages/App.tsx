@@ -1,17 +1,17 @@
-import  React,{ Suspense} from 'react'
+import { Suspense } from 'react'
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
+import Menu from '../components/Menu'
 import Popups from '../components/Popups'
 import Web3ReactManager from '../components/Web3ReactManager'
-import { RedirectDuplicateTokenIds, RedirectOldAddLiquidityPathStructure } from './AddLiquidity/redirects'
-import { RedirectOldRemoveLiquidityPathStructure } from './RemoveLiquidity/redirects'
 import AddLiquidity from './AddLiquidity'
+import { RedirectDuplicateTokenIds, RedirectOldAddLiquidityPathStructure } from './AddLiquidity/redirects'
 import Pool from './Pool'
 import PoolFinder from './PoolFinder'
 import RemoveLiquidity from './RemoveLiquidity'
+import { RedirectOldRemoveLiquidityPathStructure } from './RemoveLiquidity/redirects'
 import Swap from './Swap'
 import { RedirectPathToSwapOnly } from './Swap/redirects'
-import Menu from '../components/Menu'
 
 const AppWrapper = styled.div`
   display: flex;

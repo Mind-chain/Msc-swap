@@ -3,9 +3,9 @@ import { getVersionUpgrade, VersionUpgrade } from '@uniswap/token-lists'
 // eslint-disable-next-line import/no-unresolved
 import { TokenList } from '@uniswap/token-lists/dist/types'
 import { DEFAULT_LIST_OF_LISTS, DEFAULT_TOKEN_LIST_URL } from '../../constants/lists'
+import DEFAULT_LIST from '../../constants/token/msc.json'
 import { updateVersion } from '../global/actions'
 import { acceptListUpdate, addList, fetchTokenList, removeList, selectList } from './actions'
-import DEFAULT_LIST from '../../constants/token/msc.json'
 
 export interface ListsState {
   readonly byUrl: {
@@ -51,9 +51,9 @@ export default createReducer(initialState, (builder) =>
   builder
     .addCase(fetchTokenList.pending, (state, { payload: { requestId, url } }) => {
       state.byUrl[url] = {
+        ...state.byUrl[url],
         current: null,
         pendingUpdate: null,
-        ...state.byUrl[url],
         loadingRequestId: requestId,
         error: null,
       }
