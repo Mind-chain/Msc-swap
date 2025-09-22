@@ -1,17 +1,17 @@
-import  React,{ Suspense} from 'react'
+import { Suspense } from 'react'
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
+import Menu from '../components/Menu'
 import Popups from '../components/Popups'
 import Web3ReactManager from '../components/Web3ReactManager'
-import { RedirectDuplicateTokenIds, RedirectOldAddLiquidityPathStructure } from './AddLiquidity/redirects'
-import { RedirectOldRemoveLiquidityPathStructure } from './RemoveLiquidity/redirects'
 import AddLiquidity from './AddLiquidity'
+import { RedirectDuplicateTokenIds, RedirectOldAddLiquidityPathStructure } from './AddLiquidity/redirects'
+import Home from './Home/Home'
 import Pool from './Pool'
 import PoolFinder from './PoolFinder'
 import RemoveLiquidity from './RemoveLiquidity'
+import { RedirectOldRemoveLiquidityPathStructure } from './RemoveLiquidity/redirects'
 import Swap from './Swap'
-import { RedirectPathToSwapOnly } from './Swap/redirects'
-import Menu from '../components/Menu'
 
 const AppWrapper = styled.div`
   display: flex;
@@ -55,27 +55,30 @@ export default function App() {
   return (
     <Suspense fallback={null}>
       <HashRouter>
-        <AppWrapper>
-          <Menu>
-            <BodyWrapper>
-              <Popups />
-              <Web3ReactManager>
-                <Switch>
-                  <Route exact path="/swap" component={Swap} />
-                  <Route exact path="/find" component={PoolFinder} />
-                  <Route exact path="/pool" component={Pool} />
-                  <Route exact path="/add" component={AddLiquidity} />
-                  <Route exact path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
-                  <Route exact path="/add/:currencyIdA" component={RedirectOldAddLiquidityPathStructure} />
-                  <Route exact path="/add/:currencyIdA/:currencyIdB" component={RedirectDuplicateTokenIds} />
-                  <Route exact path="/remove/:tokens" component={RedirectOldRemoveLiquidityPathStructure} />
-                  <Route component={RedirectPathToSwapOnly} />
-                </Switch>
-              </Web3ReactManager>
-              <Marginer />
-            </BodyWrapper>
-          </Menu>
-        </AppWrapper>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <AppWrapper>
+            <Menu>
+              <BodyWrapper>
+                <Popups />
+                <Web3ReactManager>
+                  <Switch>
+                    <Route exact path="/find" component={PoolFinder} />
+                    <Route exact path="/pool" component={Pool} />
+                    <Route exact path="/swap" component={Swap} />
+                    <Route exact path="/add" component={AddLiquidity} />
+                    <Route exact path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
+                    <Route exact path="/add/:currencyIdA" component={RedirectOldAddLiquidityPathStructure} />
+                    <Route exact path="/add/:currencyIdA/:currencyIdB" component={RedirectDuplicateTokenIds} />
+                    <Route exact path="/remove/:tokens" component={RedirectOldRemoveLiquidityPathStructure} />
+                    {/* <Route component={RedirectPathToSwapOnly} /> */}
+                  </Switch>
+                </Web3ReactManager>
+                <Marginer />
+              </BodyWrapper>
+            </Menu>
+          </AppWrapper>
+        </Switch>
       </HashRouter>
     </Suspense>
   )

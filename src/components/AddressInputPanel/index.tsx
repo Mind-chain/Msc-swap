@@ -1,13 +1,13 @@
-import React, { useCallback } from 'react'
-import styled from 'styled-components'
-import { Text } from 'msc-uikit'
 import useI18n from 'hooks/useI18n'
-import useENS from '../../hooks/useENS'
+import { Text } from 'msc-uikit'
+import { useCallback } from 'react'
+import styled from 'styled-components'
 import { useActiveWeb3React } from '../../hooks'
-import { ExternalLink } from '../Shared'
+import useENS from '../../hooks/useENS'
+import { getBscScanLink } from '../../utils'
 import { AutoColumn } from '../Column'
 import { RowBetween } from '../Row'
-import { getBscScanLink } from '../../utils'
+import { ExternalLink } from '../Shared'
 
 const InputPanel = styled.div`
   display: flex;
