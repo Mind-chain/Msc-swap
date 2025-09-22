@@ -35,9 +35,7 @@
     "no-nested-ternary": 0,
     "default-case": 0,
     "react/require-default-props": 0,
-    "class-methods-use-this": 0,
-    "react/react-in-jsx-scope": "off"
-
+    "class-methods-use-this": 0
     // End temporary rules
   }
 }
