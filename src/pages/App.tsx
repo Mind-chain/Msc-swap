@@ -11,6 +11,7 @@ import Pool from './Pool'
 import PoolFinder from './PoolFinder'
 import RemoveLiquidity from './RemoveLiquidity'
 import { RedirectOldRemoveLiquidityPathStructure } from './RemoveLiquidity/redirects'
+import Swap from './Swap'
 
 const AppWrapper = styled.div`
   display: flex;
@@ -64,6 +65,7 @@ export default function App() {
                   <Switch>
                     <Route exact path="/find" component={PoolFinder} />
                     <Route exact path="/pool" component={Pool} />
+                    <Route exact path="/swap" component={Swap} />
                     <Route exact path="/add" component={AddLiquidity} />
                     <Route exact path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
                     <Route exact path="/add/:currencyIdA" component={RedirectOldAddLiquidityPathStructure} />
