@@ -3,5 +3,6 @@
 
 # testing
 /coverage
+/build
 .eslintcache
 .vercel
